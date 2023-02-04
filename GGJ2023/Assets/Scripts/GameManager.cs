@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public GameObject results;
+    public GameObject fadeout;
     public float resultDelay = 2.0f;
+    public float waitForEnd = 1.0f;
     private int count = 0;
 
     public void CheckResults()
@@ -64,6 +67,17 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(resultDelay);
         results.SetActive(true);
+        yield return new WaitForSeconds(waitForEnd);
+        Image im = fadeout.GetComponent<Image>();
+        im.color = new Color(0f, 0f, 0f, 0f);
+        fadeout.SetActive(true);
+        for (float alpha = 0.0f;alpha<1.0f;alpha+=0.05f)
+        {
+            im.color = new Color(0f, 0f, 0f, alpha);
+            yield return new WaitForFixedUpdate();
+        }
+        im.color = new Color(0f, 0f, 0f, 1f);
+        yield return new WaitForSeconds(waitForEnd);
         yield break;
     }
 }

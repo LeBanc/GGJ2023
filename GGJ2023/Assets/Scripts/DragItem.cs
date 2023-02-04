@@ -13,9 +13,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     [HideInInspector]
     public Vector2 centerPoint;
     private Vector2 worldCenterPoint => transform.TransformPoint(centerPoint);
-    [SerializeField]
     private bool isSet = false;
-    [SerializeField]
     private bool isLocked = false;
     private bool moveToOrigin = false;
     private GameObject target;

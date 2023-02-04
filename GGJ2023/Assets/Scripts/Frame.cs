@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Playables;
 
 public class Frame : MonoBehaviour
 {
@@ -40,11 +39,9 @@ public class Frame : MonoBehaviour
                 StartCoroutine(ValidationAnimation());
                 currentCharItem.GetComponent<DragItem>().Lock();
                 alreadyValid = true;
-                Debug.Log(gameObject.name + ": valid");
                 return true;
             }
         }
-        Debug.Log(gameObject.name + ": invalid");
         return false;
     }
 
