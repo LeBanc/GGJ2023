@@ -7,12 +7,16 @@ using UnityEngine.EventSystems;
 public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public float speed = 150;
-    
+        
     private DragManager manager = null;
 
-    private Vector2 centerPoint;
+    [HideInInspector]
+    public Vector2 centerPoint;
     private Vector2 worldCenterPoint => transform.TransformPoint(centerPoint);
+    [SerializeField]
     private bool isSet = false;
+    [SerializeField]
+    private bool isLocked = false;
     private bool moveToOrigin = false;
     private GameObject target;
 
@@ -23,10 +27,23 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         centerPoint = (transform as RectTransform).anchoredPosition;
     }
 
+    public void Lock()
+    {
+        isLocked = true;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        manager.RegisterDraggedObject(this);
-        if (target != null) target.GetComponent<Image>().raycastTarget = true;
+        if(!isLocked)
+        {
+            manager.RegisterDraggedObject(this);
+            if (target != null)
+            {
+                target.GetComponent<Image>().raycastTarget = true;
+                target.GetComponent<Frame>().currentCharItem = null;
+                target = null;
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,12 +53,15 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        manager.UnregisterDraggedObject(this);
-        checkWhereDrop(eventData);
-
-        if (!isSet)
+        if (!isLocked)
         {
-            moveToOrigin = true;
+            manager.UnregisterDraggedObject(this);
+            checkWhereDrop(eventData);
+
+            if (!isSet)
+            {
+                moveToOrigin = true;
+            }
         }
     }
 
@@ -59,10 +79,11 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             }
             else if (r.gameObject.CompareTag("Respawn"))
             {
-                (transform as RectTransform).anchoredPosition = r.gameObject.GetComponent<RectTransform>().anchoredPosition + new Vector2(0,-2);
-                r.gameObject.GetComponent<Image>().raycastTarget = false;
-                //transform.SetAsFirstSibling();
                 target = r.gameObject;
+                (transform as RectTransform).anchoredPosition = target.GetComponent<RectTransform>().anchoredPosition + new Vector2(0,-2);
+                target.GetComponent<Image>().raycastTarget = false;
+                target.GetComponent<Frame>().currentCharItem = this.GetComponent<CharacterItem>();
+                
                 isSet = true;
             }
             else
