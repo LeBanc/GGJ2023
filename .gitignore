@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+GGJ2023/Builds/
+GGJ2023/Library/
+GGJ2023/Logs/
+GGJ2023/obj/

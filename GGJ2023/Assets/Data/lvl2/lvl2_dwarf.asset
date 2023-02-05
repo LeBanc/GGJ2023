@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl2_dwarf
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: da2de02bf0047dc4eb577bf733013726, type: 3}
+  image: {fileID: 21300000, guid: 2c4f9c75f1e811f4282f0d098f43f243, type: 3}
   parent1: {fileID: 0}
   parent2: {fileID: 0}
