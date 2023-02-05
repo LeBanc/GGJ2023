@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl2_santahutt
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 2d1f9ba69d88e1e4aafd67a42d9d447a, type: 3}
+  image: {fileID: 21300000, guid: 5190f08898404724b89ec917afaef43e, type: 3}
   parent1: {fileID: 11400000, guid: ea5ab96faed4a1c4499f7de6f3ca365e, type: 2}
   parent2: {fileID: 11400000, guid: 00fcc48f471ffe748ad890c4d6c5845f, type: 2}

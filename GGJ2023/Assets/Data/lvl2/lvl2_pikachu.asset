@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl2_pikachu
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 16c43d0c13c00b4498b087164e6b4780, type: 3}
+  image: {fileID: 21300000, guid: 2bbf72714ac5446428587c0c0f25c650, type: 3}
   parent1: {fileID: 11400000, guid: 26a5523cd2f19a24589ce32d761f5862, type: 2}
   parent2: {fileID: 11400000, guid: 7f64c96d1ad31034e8e263800e500ecc, type: 2}

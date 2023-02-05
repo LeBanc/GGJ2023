@@ -22,7 +22,6 @@ public class Frame : MonoBehaviour
             currentCharItem.GetComponent<DragItem>().Lock();
             currentCharItem.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             alreadyValid = true;
-            GetComponent<Image>().raycastTarget = false;
         }
         else
         {

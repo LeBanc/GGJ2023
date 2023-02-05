@@ -18,11 +18,17 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     private bool moveToOrigin = false;
     private GameObject target;
 
+    private Vector2 scaleFactor;
+    private float scaleFactorWebGL;
+
     // Start is called before the first frame update
     private void Awake()
     {
         manager = FindObjectOfType<DragManager>();
         centerPoint = (transform as RectTransform).anchoredPosition;
+
+        scaleFactor = new Vector2(Screen.width/1920f, Screen.height/1080f);
+        scaleFactorWebGL = FindObjectOfType<CanvasScaler>().scaleFactor;
     }
 
     public void Lock()
@@ -46,7 +52,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        (transform as RectTransform).anchoredPosition += eventData.delta;
+        (transform as RectTransform).anchoredPosition += new Vector2(eventData.delta.x / scaleFactor.x, eventData.delta.y / scaleFactor.y) * scaleFactorWebGL;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -77,6 +83,11 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             }
             else if (r.gameObject.CompareTag("Respawn"))
             {
+                if(r.gameObject.GetComponent<Frame>().currentCharItem != null)
+                {
+                    isSet = false;
+                    return;
+                }
                 target = r.gameObject;
                 (transform as RectTransform).anchoredPosition = target.GetComponent<RectTransform>().anchoredPosition + new Vector2(0,-2);
                 target.GetComponent<Image>().raycastTarget = false;
