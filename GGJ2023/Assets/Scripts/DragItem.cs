@@ -20,6 +20,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     private Vector2 scaleFactor;
     private float scaleFactorWebGL;
+    private DragSFX dragSFX;
 
     // Start is called before the first frame update
     private void Awake()
@@ -29,6 +30,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
         scaleFactor = new Vector2(Screen.width/1920f, Screen.height/1080f);
         scaleFactorWebGL = FindObjectOfType<CanvasScaler>().scaleFactor;
+
+        dragSFX = FindObjectOfType<DragSFX>();
     }
 
     public void Lock()
@@ -41,6 +44,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         if(!isLocked)
         {
             manager.RegisterDraggedObject(this);
+            dragSFX.PlaySound();
+
             if (target != null)
             {
                 target.GetComponent<Image>().raycastTarget = true;
@@ -61,6 +66,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         {
             manager.UnregisterDraggedObject(this);
             checkWhereDrop(eventData);
+
+            dragSFX.PlaySound();
 
             if (!isSet)
             {
