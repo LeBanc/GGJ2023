@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float resultDelay = 2.0f;
     public float waitForEnd = 1.0f;
     private int count = 0;
+    public string sceneToLoad;
 
     public void CheckResults()
     {
@@ -63,7 +65,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator WinAnimation()
+    protected virtual IEnumerator WinAnimation()
     {
         yield return new WaitForSeconds(resultDelay);
         results.SetActive(true);
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
         }
         im.color = new Color(0f, 0f, 0f, 1f);
         yield return new WaitForSeconds(waitForEnd);
+        SceneManager.LoadScene(sceneToLoad);
         yield break;
     }
 }
