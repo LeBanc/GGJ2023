@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl1_final
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  parent1: {fileID: 0}
-  parent2: {fileID: 0}
+  image: {fileID: 21300000, guid: f9de5f1b3fa47134da65f8aa449019f6, type: 3}
+  parent1: {fileID: 11400000, guid: 6d6d2e886f559334d86fd038cbce480e, type: 2}
+  parent2: {fileID: 11400000, guid: cf716dc8692abd540a9e60352809451b, type: 2}

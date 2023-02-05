@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     private int count = 0;
     public string sceneToLoad;
 
+    private void Start()
+    {
+        StartCoroutine(FadeIn());
+    }
+
     public void CheckResults()
     {
         Frame[] frames =  FindObjectsByType<Frame>(FindObjectsSortMode.None);
@@ -73,14 +78,33 @@ public class GameManager : MonoBehaviour
         Image im = fadeout.GetComponent<Image>();
         im.color = new Color(0f, 0f, 0f, 0f);
         fadeout.SetActive(true);
-        for (float alpha = 0.0f;alpha<1.0f;alpha+=0.05f)
+        float speed = 0.05f;
+        for (float alpha = 0.0f;alpha<1.0f;alpha+=speed)
         {
             im.color = new Color(0f, 0f, 0f, alpha);
+            speed += 0.005f;
             yield return new WaitForFixedUpdate();
         }
         im.color = new Color(0f, 0f, 0f, 1f);
-        yield return new WaitForSeconds(waitForEnd);
+        yield return new WaitForSeconds(waitForEnd/2.5f);
         SceneManager.LoadScene(sceneToLoad);
+        yield break;
+    }
+
+    protected virtual IEnumerator FadeIn()
+    {
+        Image im = fadeout.GetComponent<Image>();
+        im.color = new Color(0f, 0f, 0f, 1f);
+        fadeout.SetActive(true);
+        float speed = 0.05f;
+        for (float alpha = 1.0f; alpha > 0.0f; alpha -= speed)
+        {
+            im.color = new Color(0f, 0f, 0f, alpha);
+            speed += 0.005f;
+            yield return new WaitForFixedUpdate();
+        }
+        im.color = new Color(0f, 0f, 0f, 0f);
+        fadeout.SetActive(false);
         yield break;
     }
 }

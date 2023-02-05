@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7287fff37b92ee048882a24cc85e1922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 120
   centerPoint: {x: 0, y: 0}
 --- !u!114 &9068459373247131472
 MonoBehaviour:

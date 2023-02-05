@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl0_beaver
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 3ebcb998bd79ae547b0696a8ba3834f9, type: 3}
   parent1: {fileID: 0}
   parent2: {fileID: 0}

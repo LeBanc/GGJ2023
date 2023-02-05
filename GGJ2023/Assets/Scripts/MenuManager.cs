@@ -10,7 +10,15 @@ public class MenuManager : GameManager
 
     protected override IEnumerator WinAnimation()
     {
-        results.GetComponent<TMP_Text>().text = "Go";
+        if (actionFrame.currentCharItem.CompareTag("Quit"))
+        {
+            results.GetComponentInChildren<Image>().gameObject.SetActive(false);
+            results.GetComponent<TMP_Text>().text = "Bye";
+        }
+        else
+        {
+            results.GetComponent<TMP_Text>().text = "Go";
+        }
         yield return new WaitForSeconds(resultDelay);
         results.SetActive(true);
         yield return new WaitForSeconds(waitForEnd);

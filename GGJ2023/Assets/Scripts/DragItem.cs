@@ -112,9 +112,10 @@ public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                 maxX = 10 * Mathf.Abs(deltaX / deltaY);
             }
 
+            float tweek = Mathf.Max(1f,Mathf.Max(Mathf.Abs(deltaX), Mathf.Abs(deltaY))/100);
 
-            float x = Mathf.Min(maxX * speed * Time.fixedDeltaTime, Mathf.Abs(deltaX));
-            float y = Mathf.Min(maxY * speed * Time.fixedDeltaTime, Mathf.Abs(deltaY));
+            float x = Mathf.Min(maxX * tweek * speed * Time.fixedDeltaTime, Mathf.Abs(deltaX));
+            float y = Mathf.Min(maxY * tweek * speed * Time.fixedDeltaTime, Mathf.Abs(deltaY));
 
             (transform as RectTransform).anchoredPosition -= new Vector2(signX * x, signY * y);
 

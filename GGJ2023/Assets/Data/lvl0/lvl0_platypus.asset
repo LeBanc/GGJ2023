@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl0_platypus
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  parent1: {fileID: 0}
-  parent2: {fileID: 0}
+  image: {fileID: 21300000, guid: bcf30988cc4e6224097eb9e395cbcb43, type: 3}
+  parent1: {fileID: 11400000, guid: b83fa3884717df74c910824472576aaf, type: 2}
+  parent2: {fileID: 11400000, guid: 79d7a8fa74b4758429ea7face260e97b, type: 2}

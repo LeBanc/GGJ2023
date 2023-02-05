@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb1bd3d17b8a504d801e2daf35cf734, type: 3}
   m_Name: lvl1_churchill_hari1
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  parent1: {fileID: 0}
-  parent2: {fileID: 0}
+  image: {fileID: 21300000, guid: 5f5a8b77b667e824b887b1852b9a5644, type: 3}
+  parent1: {fileID: 11400000, guid: fe68bc90b149cc24aa77d27b3b9a9d06, type: 2}
+  parent2: {fileID: 11400000, guid: 1cd19a974065d804080df0aba29fd758, type: 2}

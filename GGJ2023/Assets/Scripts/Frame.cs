@@ -7,7 +7,7 @@ public class Frame : MonoBehaviour
 {
     public Character trueChar;
     public CharacterItem currentCharItem;
-    public static float animSpeed = 200;
+    public static float animSpeed = 50;
 
     private Mask mask;
     private bool alreadyValid = false;
@@ -22,6 +22,7 @@ public class Frame : MonoBehaviour
             currentCharItem.GetComponent<DragItem>().Lock();
             currentCharItem.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             alreadyValid = true;
+            GetComponent<Image>().raycastTarget = false;
         }
         else
         {
@@ -54,7 +55,7 @@ public class Frame : MonoBehaviour
     {
         while (mask.GetComponent<RectTransform>().sizeDelta.x < 400)
         {
-            mask.GetComponent<RectTransform>().sizeDelta += new Vector2(animSpeed*Time.fixedDeltaTime, 0);
+            mask.GetComponent<RectTransform>().sizeDelta += new Vector2(mask.GetComponent<RectTransform>().sizeDelta.x/5 + animSpeed * Time.fixedDeltaTime, 0);
             yield return new WaitForFixedUpdate();
         }
         yield break;
